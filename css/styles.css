@@ -1,0 +1,91 @@
+/* Custom Styles for WorkCRUD Empleos */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border-radius: 0.75rem;
+    border: none;
+}
+
+.card-header {
+    border-top-left-radius: 0.75rem !important;
+    border-top-right-radius: 0.75rem !important;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.btn-primary, .btn-success {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    filter: brightness(90%);
+}
+
+.navbar {
+    border-radius: 0; /* Remove border-radius if present */
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-text {
+    font-weight: 500;
+}
+
+/* SPA Sections */
+section {
+    display: none; /* Hidden by default */
+    padding: 20px 0;
+}
+
+section.active-section {
+    display: block; /* Show active section */
+}
+
+/* Optional: Add some padding to sections for better visual separation */
+#offersSection,
+#myApplicationsSection,
+#companiesSection,
+#companyOffersSection,
+#profileSection,
+#myOffersSection,
+#newOfferSection,
+#applicantsSection {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Adjust card body padding for job offers/applications */
+.card-body {
+    padding: 1.25rem;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+    border-color: #80bdff;
+}
+
+/* Styles for applicant list in company dashboard */
+.list-group-item-action:hover {
+    background-color: #f1f1f1;
+}
+
+/* General improvements for readability */
+p {
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #343a40;
+}

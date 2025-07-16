@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    {
+      "id": "3d2b",
+      "email": "camiloalvarezsan04@gmail.com",
+      "password": "camilo",
+      "rol": "candidato",
+      "nombreCompleto": "Juan Camilo Alvarez Sanchez",
+      "cvUrl": "",
+      "habilidades": [],
+      "experienciaLaboral": []
+    }
+  ],
+  "ofertas": [],
+  "postulaciones": []
+}

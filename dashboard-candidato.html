@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Candidato - WorkCRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">WorkCRUD Candidato</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" data-section="offers">Ofertas de Empleo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="myApplications">Mis Postulaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="companies">Empresas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="profile">Mi Perfil</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <span class="navbar-text me-3 text-white">
+                        Bienvenido, <strong id="userName"></strong>
+                    </span>
+                    <button class="btn btn-outline-light" onclick="window.logout()">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Bienvenido, <span id="welcomeName" class="text-primary"></span>!</h1>
+
+        <section id="offersSection" class="active-section">
+            <h2>Ofertas de Empleo</h2>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="searchTitle" placeholder="Buscar por título...">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="searchCompany" placeholder="Buscar por empresa...">
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary w-100" id="applySearch">Buscar</button>
+                </div>
+            </div>
+            <div class="row" id="jobOffersList">
+                </div>
+        </section>
+
+        <section id="offerDetailsSection" class="d-none">
+            <button class="btn btn-secondary mb-3" onclick="window.loadJobOffers()">← Volver a Ofertas</button>
+            <h2>Detalles de la Oferta</h2>
+            <div id="offerDetailContent" class="card p-3 shadow-sm">
+                </div>
+        </section>
+
+        <section id="myApplicationsSection" class="d-none">
+            <h2>Mis Postulaciones</h2>
+            <div class="row" id="myApplicationsList">
+                </div>
+        </section>
+
+        <section id="companiesSection" class="d-none">
+            <h2>Empresas</h2>
+            <div class="row" id="companiesList">
+                </div>
+        </section>
+
+        <section id="companyOffersSection" class="d-none">
+            <button class="btn btn-secondary mb-3" onclick="window.loadCompanies()">← Volver a Empresas</button>
+            <h2 id="companyOffersTitle">Ofertas de la Empresa</h2>
+            <div class="row" id="companyOffersList">
+                </div>
+        </section>
+
+        <section id="profileSection" class="d-none">
+            <h2>Mi Perfil</h2>
+            <form id="profileForm">
+                <div class="mb-3">
+                    <label for="profileEmail" class="form-label">Correo Electrónico (No editable)</label>
+                    <input type="email" class="form-control" id="profileEmail" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="profileName" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="profileName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="profileCV" class="form-label">URL de CV (LinkedIn, Portafolio, etc.)</label>
+                    <input type="url" class="form-control" id="profileCV">
+                </div>
+                <div class="mb-3">
+                    <label for="profileSkills" class="form-label">Habilidades (separadas por coma)</label>
+                    <textarea class="form-control" id="profileSkills" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="profileExperience" class="form-label">Experiencia Laboral (Formato: Puesto,Empresa,Años; Puesto2,Empresa2,Años2)</label>
+                    <textarea class="form-control" id="profileExperience" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                <p id="profileMessage" class="mt-3"></p>
+            </form>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/candidato.js"></script>
+</body>
+</html>

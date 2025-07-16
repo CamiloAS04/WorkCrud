@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Empresa - WorkCRUD Empleos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">WorkCRUD Empresa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" data-section="myOffers">Mis Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="newOffer">Publicar Nueva Oferta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="profile">Perfil de la Empresa</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <span class="navbar-text me-3" id="companyName"></span>
+                    <button class="btn btn-outline-light" onclick="logout()">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="mb-4">Bienvenido, <span id="welcomeCompany"></span>!</h2>
+
+        <section id="myOffersSection" class="active-section">
+            <h3>Mis Ofertas de Empleo Publicadas</h3>
+            <div id="myJobOffersList" class="row">
+                </div>
+        </section>
+
+        <section id="newOfferSection" class="d-none">
+            <h3 id="offerFormTitle">Publicar Nueva Oferta de Empleo</h3>
+            <form id="offerForm">
+                <input type="hidden" id="offerId">
+                <div class="mb-3">
+                    <label for="offerTitle" class="form-label">Título de la Vacante</label>
+                    <input type="text" class="form-control" id="offerTitle" required>
+                </div>
+                <div class="mb-3">
+                    <label for="offerDescription" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="offerDescription" rows="5" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="offerRequirements" class="form-label">Requisitos (separados por coma)</label>
+                    <input type="text" class="form-control" id="offerRequirements" placeholder="React, 3 años de experiencia, Inglés B2">
+                </div>
+                <div class="mb-3">
+                    <label for="offerSalary" class="form-label">Salario (opcional)</label>
+                    <input type="text" class="form-control" id="offerSalary" placeholder="USD 1500-2000">
+                </div>
+                <div class="mb-3">
+                    <label for="offerModality" class="form-label">Modalidad</label>
+                    <select class="form-select" id="offerModality" required>
+                        <option value="">Selecciona modalidad</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Híbrido">Híbrido</option>
+                        <option value="Remoto">Remoto</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="saveOfferBtn">Publicar Oferta</button>
+                <button type="button" class="btn btn-secondary" onclick="showSection('myOffersSection')">Cancelar</button>
+                <div id="offerMessage" class="mt-3 text-success"></div>
+            </form>
+        </section>
+
+        <section id="applicantsSection" class="d-none">
+            <button class="btn btn-secondary mb-3" onclick="showSection('myOffersSection')">← Volver a Mis Ofertas</button>
+            <h3 id="applicantsTitle">Postulantes para: [Título de la Oferta]</h3>
+            <div id="applicantsList" class="list-group">
+                </div>
+            <div id="applicantDetail" class="card mt-3 d-none">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 id="applicantNameDetail"></h5>
+                    <button type="button" class="btn-close" aria-label="Close" onclick="hideApplicantDetail()"></button>
+                </div>
+                <div class="card-body" id="applicantDetailContent">
+                    </div>
+            </div>
+        </section>
+
+        <section id="profileSection" class="d-none">
+            <h3>Perfil de la Empresa</h3>
+            <form id="companyProfileForm">
+                <div class="mb-3">
+                    <label for="companyNameInput" class="form-label">Nombre de la Empresa</label>
+                    <input type="text" class="form-control" id="companyNameInput" required>
+                </div>
+                <div class="mb-3">
+                    <label for="companyLogo" class="form-label">Logo o Imagen (URL)</label>
+                    <input type="url" class="form-control" id="companyLogo" placeholder="http://midominio.com/logo.png">
+                </div>
+                <div class="mb-3">
+                    <label for="companySector" class="form-label">Sector o Industria</label>
+                    <input type="text" class="form-control" id="companySector" required>
+                </div>
+                <div class="mb-3">
+                    <label for="companyDescription" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="companyDescription" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Perfil de Empresa</button>
+                <div id="companyProfileMessage" class="mt-3 text-success"></div>
+            </form>
+        </section>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script type="module" src="js/empresa.js"></script>
+</body>
+</html>
